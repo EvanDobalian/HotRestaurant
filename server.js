@@ -13,3 +13,31 @@ app.use(express.json());
 //Data array for reserve info
 var data = [];
 
+// Routes
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, 'index.html'));
+  });
+  
+  app.get('/tables', function(req, res) {
+    res.sendFile(path.join(__dirname, 'tables.html'));
+  });
+  
+  app.get('/reserve', function(req, res) {
+    res.sendFile(path.join(__dirname, 'reserve.html'));
+  });
+  
+  app.post('/api/tables', function(req, res) {
+    for (var i = 0; i < 4; i++) {
+      res.json(data[i]);
+    }
+  });
+  
+  app.get('/api/waitlist', function(req, res) {
+    for (var i = 5; i < diners.length; i++) {
+      res.json(data[i]);
+    }
+  });
+  
+  app.listen(port, function() {
+    console.log("I'm listening on PORT " + port);
+  });
