@@ -33,7 +33,7 @@ app.get('/', function(req, res) {
   });
   
   app.get('/api/waitlist', function(req, res) {
-    for (var i = 5; i < diners.length; i++) {
+    for (var i = 5; i < data.length; i++) {
       res.json(data[i]);
     }
   });
