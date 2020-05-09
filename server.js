@@ -15,11 +15,11 @@ var data = [];
 
 // Routes
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, 'home.html'));
   });
   
-  app.get('/tables', function(req, res) {
-    res.sendFile(path.join(__dirname, 'tables.html'));
+  app.get('/table', function(req, res) {
+    res.sendFile(path.join(__dirname, 'table.html'));
   });
   
   app.get('/reserve', function(req, res) {
@@ -27,15 +27,15 @@ app.get('/', function(req, res) {
   });
   
   app.post('/api/tables', function(req, res) {
-    for (var i = 0; i < 4; i++) {
-      res.json(data[i]);
-    }
+    var reservation = req.body;
+
+    console.log(reservation);
+    data.push(reservation);
+    res.json(reservation);
   });
   
   app.get('/api/waitlist', function(req, res) {
-    for (var i = 5; i < data.length; i++) {
-      res.json(data[i]);
-    }
+    return res.json(data);
   });
   
   app.listen(port, function() {
