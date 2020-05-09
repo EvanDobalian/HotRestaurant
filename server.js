@@ -11,7 +11,24 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //Data array for reserve info
-var data = [];
+var data = [
+  {
+    name: 'test'
+  },
+  {
+    name: 'test'
+  },
+  {
+    name: 'test'
+  },
+
+  // {
+  //   name:
+  //   phone:
+  //   email:
+  //   id:
+  // }
+];
 
 // Routes
 app.get('/', function(req, res) {
@@ -27,7 +44,7 @@ app.get('/', function(req, res) {
   });
   
   app.post('/api/tables', function(req, res) {
-    var reservation = req.body;
+    var reservation = req.params;
 
     console.log(reservation);
     data.push(reservation);
